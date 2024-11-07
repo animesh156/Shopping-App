@@ -9,12 +9,12 @@ function Carasouel() {
         loop={true}
         autoplayDelay={4000}
         prevArrow={({ handlePrev }) => (
-          <button onClick={handlePrev} className="absolute top-1/2 left-0 transform -translate-y-1/2 text-red-500 w-44 hover:text-red-700">
+          <button onClick={handlePrev} className="absolute top-1/2 left-0 transform -translate-y-1/2 text-red-500  hover:text-red-700">
             &#9664; {/* Left arrow icon */}
           </button>
         )}
         nextArrow={({ handleNext }) => (
-          <button onClick={handleNext} className="absolute top-1/2 right-0 transform -translate-y-1/2 text-red-500 w-44 hover:text-red-700">
+          <button onClick={handleNext} className="absolute top-1/2 right-0 transform -translate-y-1/2 text-red-500  hover:text-red-700">
             &#9654; {/* Right arrow icon */}
           </button>
         )}

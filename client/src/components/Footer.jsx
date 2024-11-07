@@ -9,7 +9,7 @@ const currentYear = new Date().getFullYear();
     <footer>
      
        
-        <div className="flex w-full flex-col items-center justify-center border-t border-blue-500 mb-5 py-4 md:flex-row md:justify-evenly">
+        <div className="flex w-full bg-blue-gray-200 h-32 flex-col items-center justify-center border-t border-blue-500  py-4 md:flex-row md:justify-evenly">
           <Typography
             variant="small"
             className="mb-4 text-center font-bold text-blue-gray-900 md:mb-0"

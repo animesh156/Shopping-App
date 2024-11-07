@@ -42,8 +42,8 @@ const CheckOut = () => {
     }
 
     try {
-      // Clear the cart by calling your API
-      await axios.delete("https://shopping-app-backend-nine.vercel.app/products/clear"); // Replace with your actual clear cart API URL
+    
+      await axios.delete("https://shopping-app-backend-nine.vercel.app/products/clear"); 
 
       // Show success alert
       setAlertVisible(true);
@@ -72,7 +72,7 @@ const CheckOut = () => {
         <Alert
            className="fixed bg-cyan-200 top-50 left-0 right-0 mx-auto w-full max-w-md z-50 text-center"
         >
-          Payment Successful!
+          Payment Successful, Order Will Be Delivered In 10 Days
         </Alert>
       )}
    
