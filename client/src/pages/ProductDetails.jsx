@@ -32,7 +32,7 @@ function ProductDetails() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:6887/products")
+      .get("https://shopping-app-backend-nine.vercel.app/products")
       .then((response) => {
         setProducts(response.data);
         const uniqueCategories = [
@@ -67,7 +67,7 @@ function ProductDetails() {
     const quantity = quantities[id];
 
     try {
-      const response = await axios.post("http://localhost:6887/products/cart/add", {
+      const response = await axios.post("https://shopping-app-backend-nine.vercel.app/products/cart/add", {
         name: title,
         image,
         quantity,
@@ -97,7 +97,7 @@ function ProductDetails() {
     const quantity = quantities[id];
 
     try {
-      const response = await axios.post("http://localhost:6887/products/cart/add", {
+      const response = await axios.post("https://shopping-app-backend-nine.vercel.app/products/cart/add", {
         name: title,
         image,
         quantity,

@@ -11,7 +11,7 @@ function Cart() {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get("http://localhost:6887/products/items"); // Replace with your API endpoint
+        const response = await axios.get("https://shopping-app-backend-nine.vercel.app/products/items"); // Replace with your API endpoint
         
         // Assuming the API returns an array of cart documents, pick the first cart's items and total
         const cart = response.data[0]; 

@@ -16,7 +16,7 @@ const CheckOut = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get("http://localhost:6887/products/items"); 
+        const response = await axios.get("https://shopping-app-backend-nine.vercel.app/products/items"); 
         
         
         const cart = response.data[0]; 
@@ -43,7 +43,7 @@ const CheckOut = () => {
 
     try {
       // Clear the cart by calling your API
-      await axios.delete("http://localhost:6887/products/clear"); // Replace with your actual clear cart API URL
+      await axios.delete("https://shopping-app-backend-nine.vercel.app/products/clear"); // Replace with your actual clear cart API URL
 
       // Show success alert
       setAlertVisible(true);
