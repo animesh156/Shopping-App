@@ -45,10 +45,9 @@ function Home() {
 
           <div>
 
-          <Link to="/products">
-            {" "}
+        
             <Button color="blue" onClick={handleClick}>Shop Now </Button>
-          </Link>
+         
 
           </div>
           
