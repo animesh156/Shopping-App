@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/products',protect, productsRoute)
-app.use('user', userRoute)
+app.use('/user', userRoute)
 
 app.listen(PORT, () => {
     console.log(`server is listening at ${PORT}`)

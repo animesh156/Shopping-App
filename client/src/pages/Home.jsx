@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import { Button } from "@material-tailwind/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,10 +16,13 @@ function Home() {
   }
   return (
     <>
-     <div className="home flex justify-center  items-center -mt-20 mb-20 h-screen flex-col ">
+     <div className="flex flex-col items-center md:flex-row justify-around h-screen ">
        
+      <div className="text-center">
 
-        <div  style={{ color: textColor, width: "330px" }} className="h-20 text-4xl mb-5  font-bold"  >
+      <h1 className="text-5xl mt-5 font-extrabold md:text-7xl mb-6 " style={{color: textColor}}>Shopsy</h1>
+
+      <div  style={{ color: textColor, width: "330px" }} className="h-20 text-2xl mb-5  font-bold"  >
             <TypeAnimation
               sequence={[
                 // Same substring at the start will only be typed out once, initially
@@ -42,11 +45,23 @@ function Home() {
             />
           </div>
 
+          <Button color="blue" onClick={handleClick}>Shop Now </Button>
 
+      </div>
+      
           <div>
 
         
-            <Button color="blue" onClick={handleClick}>Shop Now </Button>
+          <img
+            src="/light-bg.jpg"
+            alt="Fashion Light"
+            className="block dark:hidden" // Show in light mode
+          />
+          <img
+            src="/dark-bg.png"
+            alt="Fashion Dark"
+            className="hidden dark:block" // Show in dark mode
+          />
          
 
           </div>
@@ -57,7 +72,7 @@ function Home() {
        
       </div>
 
-      <h3 className="text-center text-5xl font-extrabold mb-12">Our Latest Products</h3>
+      <h3 className="text-center text-5xl font-extrabold mb-12 dark:text-sky-600">Our Latest Products</h3>
 
       <Carasouel />
 

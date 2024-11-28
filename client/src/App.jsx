@@ -14,7 +14,7 @@ function App() {
        
        <NavbarSimple />
 
-        <div className="mt-5">
+      
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,7 +25,7 @@ function App() {
           <Route path="/register" element={<Register />} />
         </Routes>
 
-        </div>
+       
       
       </Router>
     </>

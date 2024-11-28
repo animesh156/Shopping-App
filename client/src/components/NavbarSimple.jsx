@@ -7,10 +7,12 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 
 function NavList() {
+
   return (
     <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -65,6 +67,8 @@ function NavList() {
 function NavbarSimple() {
   const [openNav, setOpenNav] = React.useState(false);
 
+  const { user } = useSelector((state) => state.auth);
+
   const handleWindowResize = () =>
     window.innerWidth >= 960 && setOpenNav(false);
 
@@ -76,7 +80,11 @@ function NavbarSimple() {
     };
   }, []);
 
-  return (
+
+  if(!user) return <></>   // if user is not loggedIN then show nothing
+
+  return (      // if user is  loggedIN then show navbar
+
     <Navbar className="mx-auto max-w-screen-xl sticky top-0 z-10 px-6 py-3">
       <div className="flex items-center justify-between text-pink-400">
         <Typography
