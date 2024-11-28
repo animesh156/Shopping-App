@@ -10,10 +10,10 @@ function Home() {
   const [textColor, setTextColor] = useState("red");
   return (
     <>
-     <div className="home flex justify-center items-center -mt-20 mb-20 h-lvh flex-col ">
+     <div className="home flex justify-center  items-center -mt-20 mb-20 h-screen flex-col ">
        
 
-        <div  style={{ color: textColor, width: "330px" }} className="h-20 text-4xl mb-5  font-bold">
+        <div  style={{ color: textColor, width: "330px" }} className="h-20 text-4xl mb-5  font-bold"  >
             <TypeAnimation
               sequence={[
                 // Same substring at the start will only be typed out once, initially
