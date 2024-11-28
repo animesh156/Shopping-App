@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { TypeAnimation } from "react-type-animation";
 import Carasouel from "../components/Carasouel";
@@ -8,6 +9,11 @@ import Footer from "../components/Footer";
 
 function Home() {
   const [textColor, setTextColor] = useState("red");
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/login')
+  }
   return (
     <>
      <div className="home flex justify-center  items-center -mt-20 mb-20 h-screen flex-col ">
@@ -41,7 +47,7 @@ function Home() {
 
           <Link to="/products">
             {" "}
-            <Button color="blue">Shop Now </Button>
+            <Button color="blue" onClick={handleClick}>Shop Now </Button>
           </Link>
 
           </div>

@@ -32,7 +32,7 @@ function Register() {
     }
 
     if (isSuccess || user) {
-      navigate('/');
+      navigate('/products');
     }
 
     dispatch(reset());

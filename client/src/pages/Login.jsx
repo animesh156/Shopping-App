@@ -27,8 +27,9 @@ function Login() {
       toast.error(message);
     }
 
+
     if (isSuccess || user) {
-      navigate("/");
+      navigate("/products");
     }
 
     dispatch(reset());

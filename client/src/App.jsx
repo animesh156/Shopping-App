@@ -4,6 +4,8 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import NavbarSimple from "./components/NavbarSimple";
 import CheckOut from "./pages/CheckOut";
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/products" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
 
         </div>
