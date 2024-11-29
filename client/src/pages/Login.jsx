@@ -61,8 +61,10 @@ function Login() {
 
   return (
     <div 
-    className="h-screen w-full  flex items-center justify-center "
+    className="h-screen w-full bg-cover bg-center flex items-center justify-center log"
+    style={{ backgroundImage: "url('/log-bg.jpg')" }}
      >
+     
      
       <section className=" mx-auto  border-2 border-sky-500 shadow-md shadow-cyan-200 w-80 px-4 py-4 text-center bg-zinc-950  rounded-3xl">
         <form onSubmit={onSubmit} className="py-5 mt-6">

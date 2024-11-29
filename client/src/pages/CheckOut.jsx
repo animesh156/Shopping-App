@@ -13,10 +13,25 @@ const CheckOut = () => {
   const [alertVisible, setAlertVisible] = useState(false); // New state for alert visibilitycons
   const [totalAmount, setTotalAmount] = useState(0)
 
+  const getToken = () => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      return parsedUser.token;
+    }
+    return null;
+  };
+
+  const token = getToken();
+
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get("https://shopping-app-backend-nine.vercel.app/products/items"); 
+        const response = await axios.get("https://shopping-app-backend-nine.vercel.app/products/items",    {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }); 
         
         
         const cart = response.data[0]; 
@@ -43,7 +58,11 @@ const CheckOut = () => {
 
     try {
     
-      await axios.delete("https://shopping-app-backend-nine.vercel.app/products/clear"); 
+      await axios.delete("https://shopping-app-backend-nine.vercel.app/products/clear",    {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }); 
 
       // Show success alert
       setAlertVisible(true);
@@ -203,7 +222,7 @@ const CheckOut = () => {
             <div className="text-center">
              
 
-              <button type="submit" className="text-white mt-4 bg-cyan-400 hover:bg-cyan-300 font-bold rounded-full text-md px-5 py-2.5 text-center me-2 mb-2 ">Pay ${totalAmount}</button>
+              <button type="submit" className="text-white mt-4 bg-cyan-400 hover:bg-cyan-300 font-bold rounded-full text-md px-5 py-2.5 text-center me-2 mb-2 ">Pay ${totalAmount.toFixed(2)}</button>
             </div>
           </div>
         </form>

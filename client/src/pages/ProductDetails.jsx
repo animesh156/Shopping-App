@@ -10,6 +10,8 @@ import {
   DialogFooter,
   Spinner
 } from "@material-tailwind/react";
+import { MdAdd } from "react-icons/md";
+import { RiSubtractLine } from "react-icons/ri";
 
 function ProductDetails() {
   const [products, setProducts] = useState([]);
@@ -23,6 +25,18 @@ function ProductDetails() {
 
   const navigate = useNavigate();
 
+  const getToken = () => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      return parsedUser.token;
+    }
+    return null;
+  };
+
+  const token = getToken();
+
+
   const categoryMapping = {
     "men's clothing": "Men",
     "women's clothing": "Women",
@@ -32,7 +46,13 @@ function ProductDetails() {
 
   useEffect(() => {
     axios
-      .get("https://shopping-app-backend-nine.vercel.app/products")
+      .get("https://shopping-app-backend-nine.vercel.app/products",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         setProducts(response.data);
         const uniqueCategories = [
@@ -72,6 +92,10 @@ function ProductDetails() {
         image,
         quantity,
         price,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (response.status === 200) {
@@ -102,10 +126,14 @@ function ProductDetails() {
         image,
         quantity,
         price,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
       if (response.status === 200) {
-        navigate("/checkout");
+        navigate("/cart");
         setQuantities((prevQuantities) => ({
           ...prevQuantities,
           [id]: 1,
@@ -157,7 +185,7 @@ function ProductDetails() {
         {filteredProducts.map((product) => (
          <div
          key={product.id}
-         className="card bg-base-100 w-80 h-auto shadow-xl mt-4 border-cyan-400 border-2"
+         className="card bg-base-100 w-80 h-auto shadow-xl mt-4 border-gray-400 bg-blue-gray-900 border-2"
        >
          <figure className="px-10 pt-10">
            <img
@@ -167,10 +195,10 @@ function ProductDetails() {
            />
          </figure>
          <div className="card-body flex flex-col justify-center items-center text-center">
-           <h6 className="card-title overflow-clip text-blue-500 mt-4">
+           <h6 className="card-title overflow-clip dark:text-white text-sm mt-4">
              {product.title}
            </h6>
-           <p className="font-extrabold text-red-500 mb-3">${product.price}</p>
+           <p className="font-extrabold text-deep-orange-500 mb-3 mt-2">${product.price}</p>
        
            <button
              onClick={() => handleOpenModal(product)}
@@ -183,18 +211,18 @@ function ProductDetails() {
            <div className="flex items-center gap-2 my-2">
              <span
                onClick={() => handleQuantityChange(product.id, -1)}
-               className="border-2 cursor-pointer border-green-400 rounded-full w-7"
+               className="border-2 cursor-pointer border-green-400 rounded-full  dark:text-red-500"
              >
-               -
+              <RiSubtractLine size={22} />
              </span>
              <span className="text-blue-500 font-extrabold">
                {quantities[product.id]}
              </span>
              <span
                onClick={() => handleQuantityChange(product.id, 1)}
-               className="border-2 cursor-pointer border-green-400 rounded-full w-7"
+               className="border-2 cursor-pointer border-green-400 rounded-full dark:text-red-500"
              >
-               +
+              <MdAdd size={22} />
              </span>
            </div>
        

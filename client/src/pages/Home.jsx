@@ -72,7 +72,7 @@ function Home() {
        
       </div>
 
-      <h3 className="text-center text-5xl font-extrabold mb-12 dark:text-sky-600">Our Latest Products</h3>
+      <h3 className="text-center text-2xl md:text-4xl font-extrabold mb-12 dark:text-sky-600">Our Latest Products</h3>
 
       <Carasouel />
 
