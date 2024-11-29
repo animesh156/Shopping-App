@@ -185,7 +185,7 @@ function ProductDetails() {
         {filteredProducts.map((product) => (
          <div
          key={product.id}
-         className="card bg-base-100 w-80 h-auto shadow-xl mt-4 border-gray-400 bg-blue-gray-900 border-2"
+         className="card bg-base-100 w-80 h-auto shadow-xl mt-4 border-gray-400 dark:bg-blue-gray-900 border-2"
        >
          <figure className="px-10 pt-10">
            <img
