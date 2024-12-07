@@ -5,7 +5,7 @@ const addToCart = async (req, res) => {
   const { name, price, quantity, image } = req.body;
 
   try {
-    const user = req.user?.id || req.body.userId;
+    const user = req.user.id ;
     if (!user) {
       return res.status(400).json({ message: "User ID is required" });
     }
