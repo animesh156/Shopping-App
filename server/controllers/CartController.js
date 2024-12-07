@@ -1,4 +1,5 @@
-const Cart = require("../models/Cart");
+const Cart = require("../models/CartModel");
+const Order = require('../models/OrderModel')
 
 const addToCart = async (req, res) => {
   const { name, price, quantity, image } = req.body;
@@ -10,6 +11,16 @@ const addToCart = async (req, res) => {
     if (!cart) {
       cart = new Cart({ items: [], total: 0 });
     }
+
+     // Save the order
+    const newOrder = new Order({
+      userId,
+      items: cart.items,
+      total: cart.total,
+    });
+
+   
+   
 
     // Check if the item already exists in the cart
     const existingItemIndex = cart.items.findIndex(item => item.name === name);
@@ -32,6 +43,7 @@ const addToCart = async (req, res) => {
 
     // Save the cart
     await cart.save();
+    await newOrder.save();
 
     res.json(cart); // Return the updated cart
   } catch (error) {
@@ -50,6 +62,24 @@ const getCartItems = async (req, res) => {
     console.log(error);
   }
 };
+
+
+
+
+
+// get user's past order history
+
+const getOrderHistory = async(req,res) => {
+    const userId = req.user.id;
+
+    try {
+      const order = await Order.findOne({user: userId})
+      res.json(order)
+    } catch (error) {
+      res.status(500).json('error fetching user order history')
+    }
+}
+
 
 
 const clearCart = async (req, res) => {
@@ -76,5 +106,7 @@ const clearCart = async (req, res) => {
 module.exports = {
   addToCart,
   getCartItems,
-  clearCart
+  clearCart,
+
+  getOrderHistory
 };

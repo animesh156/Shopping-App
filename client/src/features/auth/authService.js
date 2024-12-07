@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const registerRoute = "https://shopping-app-backend-nine.vercel.app/user/register"
 
-const loginRoute =    "https://shopping-app-backend-nine.vercel.app/user/login"
+const loginRoute = "https://shopping-app-backend-nine.vercel.app/user/login"
 
 
 // Register user

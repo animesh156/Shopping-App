@@ -27,9 +27,8 @@ function Login() {
       toast.error(message);
     }
 
-
     if (isSuccess || user) {
-      navigate("/products");
+      navigate("/dashboard");
     }
 
     dispatch(reset());
@@ -62,16 +61,15 @@ function Login() {
   return (
     <div 
     className="h-screen w-full bg-cover bg-center flex items-center justify-center log"
-    style={{ backgroundImage: "url('/log-bg.jpg')" }}
+    style={{ backgroundImage: "url('/bg.jpg')" }}
      >
-     
      
       <section className=" mx-auto  border-2 border-sky-500 shadow-md shadow-cyan-200 w-80 px-4 py-4 text-center bg-zinc-950  rounded-3xl">
         <form onSubmit={onSubmit} className="py-5 mt-6">
           <div>
             <input
               type="email"
-             className="py-2.5 px-3 border-2 border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-500 rounded-3xl  dark:bg-black caret-yellow-500 text-rose-500 mb-8"
+             className="py-2.5 px-3 border-2 border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-500 rounded-3xl  bg-black caret-yellow-500 text-rose-500 mb-8"
               id="email"
               name="email"
               value={email}
@@ -83,7 +81,7 @@ function Login() {
           <div>
             <input
               type="password"
-              className="py-2.5 px-3 border-2 border-pink-400 rounded-3xl focus:outline-none focus:ring-2 focus:ring-pink-500 dark:bg-black caret-rose-500 text-rose-500 mb-8"
+              className="py-2.5 px-3 border-2 border-pink-400 rounded-3xl focus:outline-none focus:ring-2 focus:ring-pink-500 bg-black caret-rose-500 text-rose-500 mb-8"
               id="password"
               name="password"
               value={password}
