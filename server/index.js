@@ -10,20 +10,7 @@ const {protect} = require('./middleware/authMiddleware')
 
 connectDB()
 
-const allowedOrigins = ['https://shopping-app-five-iota.vercel.app'];
-
-app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-    credentials: true,                         // Allow credentials (if needed)
-}));
-
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 
