@@ -11,7 +11,7 @@ const OrderSchema = new mongoose.Schema(
       image: { type: String },
     },
   ],
-  total: { type: Number, required: true },
+  
   createdAt: { type: Date, default: Date.now },
     }
 )

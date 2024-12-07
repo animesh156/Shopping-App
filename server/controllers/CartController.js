@@ -2,7 +2,7 @@ const Cart = require("../models/CartModel");
 const Order = require('../models/OrderModel')
 
 const addToCart = async (req, res) => {
-  const { name, price, quantity, image } = req.body;
+  const { name, price, quantity, image, userId } = req.body;
 
   try {
     let cart = await Cart.findOne();
@@ -16,7 +16,7 @@ const addToCart = async (req, res) => {
     const newOrder = new Order({
       userId,
       items: cart.items,
-      total: cart.total,
+      
     });
 
    
