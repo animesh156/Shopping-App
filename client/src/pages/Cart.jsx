@@ -24,7 +24,7 @@ function Cart() {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get("https://shopping-app-backend-nine.vercel.app/products/items",    {
+        const response = await axios.get("https://shopping-app-backend-tau.vercel.app/products/items",    {
           headers: {
             Authorization: `Bearer ${token}`,
           },

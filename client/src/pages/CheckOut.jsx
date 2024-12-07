@@ -27,7 +27,7 @@ const CheckOut = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get("https://shopping-app-backend-nine.vercel.app/products/items",    {
+        const response = await axios.get("https://shopping-app-backend-tau.vercel.app/products/items",    {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -58,7 +58,7 @@ const CheckOut = () => {
 
     try {
     
-      await axios.delete("https://shopping-app-backend-nine.vercel.app/products/clear",    {
+      await axios.delete("https://shopping-app-backend-tau.vercel.app/products/clear",    {
         headers: {
           Authorization: `Bearer ${token}`,
         },

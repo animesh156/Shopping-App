@@ -46,7 +46,7 @@ function ProductDetails() {
 
   useEffect(() => {
     axios
-      .get("https://shopping-app-backend-nine.vercel.app/products",
+      .get("https://shopping-app-backend-tau.vercel.app/products",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -87,7 +87,7 @@ function ProductDetails() {
     const quantity = quantities[id];
 
     try {
-      const response = await axios.post("https://shopping-app-backend-nine.vercel.app/products/cart/add", {
+      const response = await axios.post("https://shopping-app-backend-tau.vercel.app/products/cart/add", {
         name: title,
         image,
         quantity,
@@ -121,7 +121,7 @@ function ProductDetails() {
     const quantity = quantities[id];
 
     try {
-      const response = await axios.post("https://shopping-app-backend-nine.vercel.app/products/cart/add", {
+      const response = await axios.post("https://shopping-app-backend-tau.vercel.app/products/cart/add", {
         name: title,
         image,
         quantity,
