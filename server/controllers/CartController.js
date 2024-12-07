@@ -2,7 +2,7 @@ const Cart = require("../models/CartModel");
 const Order = require('../models/OrderModel')
 
 const addToCart = async (req, res) => {
-  const { name, price, quantity, image, userId } = req.body;
+  const { name, price, quantity, image } = req.body;
 
   try {
     let cart = await Cart.findOne();
@@ -13,11 +13,6 @@ const addToCart = async (req, res) => {
     }
 
      // Save the order
-    const newOrder = new Order({
-      userId,
-      items: cart.items,
-      
-    });
 
    
    
@@ -40,6 +35,14 @@ const addToCart = async (req, res) => {
       (acc, item) => acc + item.price * item.quantity,
       0
     );
+
+
+    const newOrder = new Order({
+      user,
+      items: cart.items,
+      
+    });
+
 
     // Save the cart
     await cart.save();
