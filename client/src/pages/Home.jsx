@@ -76,18 +76,18 @@ function Home() {
   };
   return (
     <>
-      <div className="flex items-center opacity-85  bg-gradient-to-r from-pink-50 to-pink-200 m-auto justify-between border max-w-7xl rounded-2xl border-white mb-5 mt-3 ">
+      <div className="flex items-center opacity-85  bg-gradient-to-r from-pink-50 to-pink-200 m-auto md:justify-between border md:max-w-7xl md:rounded-2xl border-white mb-5 md:mt-3 ">
         <div className="text-center">
           <h1
-            className="text-5xl mt-5 font-extrabold md:text-7xl mb-6 "
+            className=" mt-5 font-extrabold md:text-7xl mb-4 "
             style={{ color: textColor }}
           >
             Shopsy
           </h1>
 
           <div
-            style={{ color: textColor, width: "330px" }}
-            className="h-20 text-2xl mb-5  font-bold"
+            style={{ color: textColor, width: "350px" }}
+            className="h-15 md:text-2xl mb-3  md:font-bold"
           >
             <TypeAnimation
               sequence={[
@@ -108,7 +108,7 @@ function Home() {
             />
           </div>
 
-          <button onClick={handleClick} className="btn btn-success">
+          <button onClick={handleClick} className="bg-green-500 cursor-pointer md:mt-4 hover:bg-green-600 py-0.5 px-1.5 md:py-1 md:px-2 rounded-md text-xs md:text-lg mb-1 ">
             Shop Now{" "}
           </button>
         </div>
@@ -135,24 +135,24 @@ function Home() {
         Latest Collections
       </p>
 
-      <div className="flex flex-wrap justify-center gap-x-2 ">
+      <div className="flex flex-wrap justify-center gap-x-3 ">
         {latestProducts.map((product) => (
           <div
-            className="card bg-base-100 md:w-80 mt-4 w-64 mb-3 shadow-sm"
+            className="card bg-neutral-900 md:w-72 mt-4 w-40 mb-3 shadow-sm"
             key={product.id}
           >
             <figure className="bg-gradient-to-b opacity-70 from-pink-50 to-pink-200">
               <img src={product.image} alt="Shoes" />
             </figure>
-            <div className="card-body">
-              <h2 className="card-title">
+            <div className="p-2">
+              <h2 className="text-sm mb-1 font-medium text-sky-500">
                 {product.name}
-                <div className="badge badge-secondary">NEW</div>
+               
               </h2>
-              <p>{product.desc}</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-info">Buy Now</button>
-              </div>
+              <p className="text-xs mb-2">{product.desc}</p>
+             
+                <button className="bg-cyan-500 text-black text-sm py-0.5 md:py-1 rounded-md hover:bg-cyan-600 px-1.5">Buy Now</button>
+              
             </div>
           </div>
         ))}

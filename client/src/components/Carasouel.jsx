@@ -3,6 +3,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useNavigate } from "react-router-dom";
 
 const topProducts = [
   {
@@ -47,7 +48,10 @@ const topProducts = [
 ];
 
 function Carousel() {
+  const navigate = useNavigate()
+
   return (
+
     <div className="max-w-4xl mx-auto my-10">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
@@ -60,14 +64,14 @@ function Carousel() {
       >
         {topProducts.map((product, index) => (
           <SwiperSlide key={index}>
-           <div className="card bg-gray-100 dark:bg-neutral-900 w-64 shadow-md mx-auto">
+           <div className="card bg-gray-100 dark:bg-neutral-900 md:w-64 w-56  shadow-md mx-auto">
 <figure className="bg-gradient-to-b from-pink-50 to-pink-200">
   <img className="h-52" src={product.image} alt={product.name} />
 </figure>
 
 <div className="card-body">
   <h2 className="card-title text-center">{product.name}</h2>
-  <button className="btn bg-rose-500">Buy Now</button>
+  <button className="btn bg-rose-500" onClick={() => navigate('/login')}>Buy Now</button>
 
   {/* Rating */}
   <div className="rating rating-xs flex justify-center mt-2">
