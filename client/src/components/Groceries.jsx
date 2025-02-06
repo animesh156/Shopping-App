@@ -4,14 +4,12 @@ import { MdAdd } from "react-icons/md";
 import { RiSubtractLine } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 
-
-
 function ProductDetails() {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6; // Show 6 products per page
+  const productsPerPage = 8; // Show 8 products per page
   const [loading, setLoading] = useState(true);
-  const [category, setCategory] = useState("");
+
   const [quantities, setQuantities] = useState({});
 
   const [openModal, setOpenModal] = useState(false);
@@ -26,20 +24,15 @@ function ProductDetails() {
     return null;
   };
 
-  
-
   const token = getToken();
-
-  
 
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const url = category
-          ? `https://dummyjson.com/products/category/${category}`
-          : "https://dummyjson.com/products"; // Fetch all products if no category is selected
-        const response = await axios.get(url);
+        const response = await axios.get(
+          "https://dummyjson.com/products/category/groceries"
+        );
         setProducts(response.data.products);
       } catch (error) {
         console.log(error);
@@ -48,7 +41,7 @@ function ProductDetails() {
       }
     };
     fetchProducts();
-  }, [category]);
+  }, []);
 
   const handleQuantityChange = (productId, delta) => {
     setQuantities((prevQuantities) => ({
@@ -139,54 +132,18 @@ function ProductDetails() {
 
   return (
     <>
+      <ToastContainer />
 
-    <ToastContainer />
-  
-
-<div className="grid md:grid-cols-12  grid-cols-1 mt-5 p-2 space-x-4">
-      {/* Filter Section */}
-    
-
-      <div className=" bg-white  m-auto md:m-0 md:col-span-3 flex flex-col items-center dark:bg-neutral-900 p-5 rounded-lg shadow-md">
-        <h1 className="text-xl font-extrabold  md:text-left">Filters</h1>
-
-        <ul className="flex md:flex-col flex-wrap gap-2 md:mt-6 mt-4">
-          {[
-            { label: "Tablets", value: "tablets" },
-            { label: "Laptops", value: "laptops" },
-            { label: "Mobiles", value: "smartphones" },
-            { label: "Furniture", value: "furniture" },
-            { label: "Beauty", value: "beauty" },
-          ].map((item) => (
-            <li key={item.value} className="flex items-center">
-              <input
-                type="checkbox"
-                className="w-5 h-5 mr-2 cursor-pointer"
-                checked={category === item.value}
-                onChange={() =>
-                  setCategory(category === item.value ? "" : item.value)
-                }
-              />
-              <span className="text-base">{item.label}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-
-    
-
-      {/* Products Grid */}
-      <div className="col-span-9 mt-5">
+      <div className=" mt-5">
         <h1 className="md:text-3xl mb-3 text-xl font-bold text-center text-pink-500 uppercase">
-          {category ? category : "All Products"}
+          Groceries
         </h1>
 
-        <div className="flex flex-wrap justify-evenly gap-y-4">
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
           {currentProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-slate-100  dark:bg-neutral-900 p-2 rounded-lg shadow-md w-64 flex flex-col items-center"
+              className="bg-slate-100  dark:bg-neutral-900 p-2 rounded-lg shadow-md w-72 flex flex-col items-center"
             >
               <img
                 src={product.images[0]}
@@ -271,26 +228,27 @@ function ProductDetails() {
 
         {/* Product Details Modal */}
         {selectedProduct && (
-  <dialog open={openModal} className="modal">
-    <div className="modal-box">
-      <h3 className="font-bold text-lg text-pink-400">
-        {selectedProduct.title}
-      </h3>
-      <p className="py-4 text-blue-600">{selectedProduct.description}</p>
-      <div className="modal-action">
-        <button onClick={() => setOpenModal(false)} className="btn btn-error">
-          Close
-        </button>
+          <dialog open={openModal} className="modal">
+            <div className="modal-box">
+              <h3 className="font-bold text-lg text-pink-400">
+                {selectedProduct.title}
+              </h3>
+              <p className="py-4 text-blue-600">
+                {selectedProduct.description}
+              </p>
+              <div className="modal-action">
+                <button
+                  onClick={() => setOpenModal(false)}
+                  className="btn btn-error"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </dialog>
+        )}
       </div>
-    </div>
-  </dialog>
-)}
-
-      </div>
-    
-    </div>
     </>
-    
   );
 }
 

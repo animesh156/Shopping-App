@@ -1,4 +1,4 @@
-import { List, ListItem, Button, Spinner } from "@material-tailwind/react";
+
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -49,7 +49,7 @@ function Cart() {
   }, []);
 
   if(loading) return <div className="flex items-center justify-center min-h-screen">
-  <Spinner color="pink" className="h-32 w-32" />
+ <span className="loading loading-spinner text-info w-14"></span>
 </div>
 
   return (
@@ -59,10 +59,10 @@ function Cart() {
       </h1>
 
       <div className="h-96 md:h-80 overflow-y-scroll ">
-      <List>
+      <ul>
   {cartItems.length > 0 ? (
     cartItems.map((item) => (
-      <ListItem
+      <li
         key={item._id}
         className="grid grid-cols-2 sm:grid-cols-4 items-center gap-4 p-4 bg-teal-50 dark:bg-slate-800 border-b-2 dark:border-gray-500 border-gray-200"
       >
@@ -108,12 +108,12 @@ function Cart() {
             Total: ${item.price * item.quantity}
           </p>
         </div>
-      </ListItem>
+      </li>
     ))
   ) : (
     <p className="text-center text-gray-500 dark:text-red-500 p-4">No items in the cart</p>
   )}
-</List>
+</ul>
 
       </div>
 
@@ -123,7 +123,7 @@ function Cart() {
         </p>
 
         <Link to='/checkout'>
-          <Button color="green">Proceed to Checkout</Button>
+          <button className='bg-green-500 hover:bg-green-700 mb-3 px-3 py-2 rounded-md'>Checkout</button>
         </Link>
       </div>
     </>

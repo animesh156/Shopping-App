@@ -1,7 +1,8 @@
-import { Button, Avatar } from "@material-tailwind/react";
+
 import { logout, reset } from "../features/auth/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {ToastContainer, toast} from 'react-toastify'
 
 
 const Profile = () => {
@@ -15,9 +16,13 @@ const Profile = () => {
 
 
   const onLogout = () => {
-    dispatch(logout());
-    dispatch(reset());
-    navigate("/");
+    toast.success('Logged out sucessfully')
+    setTimeout(() => {
+      dispatch(logout());
+      dispatch(reset());
+      navigate("/");
+    },1000)
+    
   };
 
   const storedUser = localStorage.getItem("user");
@@ -28,17 +33,18 @@ const Profile = () => {
 
   return (
     <div className="flex items-center flex-col mt-20">
-      <Avatar src={avatar} className="w-36 h-36"></Avatar>
+      <ToastContainer />
+      <img src={avatar} className="w-36 h-36"></img>
       <h1 className="text-sm md:text-xl dark:text-pink-500 font-extrabold mb-6 mt-4">
         {userName}
       </h1>
 
-      <Button
+      <button
         onClick={onLogout}
-        className="w-24 dark:bg-red-500 dark:hover:shadow-md dark:hover:shadow-red-300"
+        className="w-24 bg-red-500 hover:shadow-md py-1 hover:shadow-red-300"
       >
         LogOut
-      </Button>
+      </button>
 
      
 

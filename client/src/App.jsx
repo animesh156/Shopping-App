@@ -7,6 +7,9 @@ import CheckOut from "./pages/CheckOut";
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from "./pages/Profile";
+import MenProducts from "./components/MenProducts";
+import WomenProducts from "./components/WomenProducts";
+import Groceries from "./components/Groceries";
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/mens" element={<MenProducts />} />
+          <Route path="/women" element={<WomenProducts />} />
+          <Route path="/groceries" element={<Groceries />} />
         </Routes>
 
        
