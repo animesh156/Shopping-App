@@ -64,17 +64,17 @@ function Carousel() {
       >
         {topProducts.map((product, index) => (
           <SwiperSlide key={index}>
-           <div className="card bg-gray-100 dark:bg-neutral-900 md:w-64 w-56  shadow-md mx-auto">
+           <div className="card bg-gray-100 h-80 md:h-96 dark:bg-neutral-900 md:w-64 w-56  shadow-md mx-auto">
 <figure className="bg-gradient-to-b from-pink-50 to-pink-200">
-  <img className="h-52" src={product.image} alt={product.name} />
+  <img className="h-40 md:h-52" src={product.image} alt={product.name} />
 </figure>
 
-<div className="card-body">
-  <h2 className="card-title text-center">{product.name}</h2>
-  <button className="btn bg-rose-500" onClick={() => navigate('/login')}>Buy Now</button>
+<div className="m-auto space-y-2">
+  <h2 className=" text-center">{product.name}</h2>
+  <button className="btn  bg-rose-500" onClick={() => navigate('/login')}>Buy Now</button>
 
   {/* Rating */}
-  <div className="rating rating-xs flex justify-center mt-2">
+  <div className="rating rating-xs flex justify-center mt-1 mb-5">
     {[1, 2, 3, 4, 5].map((star) => (
       <input
         key={star}
